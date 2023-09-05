@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div id="app">
+    <posts :data="42"></posts>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    Vue.component('posts', {
+        // take data from the outside to the inside component
+        // the prop's name shoud be the same as """data""" in <posts :data="42"></posts>
+        // the param in the template shoule be change together
+        props: ['data'],
+        template: '<h1 @click="display">{{ data }}</h1>',
+        data() {
+            return {
+                message: 'Hello Jaemin!'
+            }
+        },
+        methods: {
+            display(){
+                console.log('hello');
+            }
+        }
+    });
+
+
+    let vm = new Vue({
+        el: '#app',
+    })
+</script>
