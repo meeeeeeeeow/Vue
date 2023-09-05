@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div id="app">
+    <posts></posts>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    Vue.component('posts', {
+        // the type of metadata that we want in the components
+        template: '<h1>Hellosssss</h1>'
+    });
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello'
+        }
+    })
+</script>
