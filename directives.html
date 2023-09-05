@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div id="app">
+    <a :href="url">{{ url }}</a>
+
+    <!-- v-on: is the same as @ -->
+    <h1 v-on:click="number++">{{ number }}</h1>
+    <h1 @click="number--">Decrease</h1>
+    
+    <!-- prevent refresh the window after submission -->
+    <form action="" @submit.prevent="number++">
+        <button type="submit">SUBMIT</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello',
+            url: 'https://youtube.com',
+            number: 16
+        }
+    })
+</script>
