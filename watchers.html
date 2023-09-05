@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div id="app">
+    <h1>Jaemin {{ isActive === 'active' ? 'is Active' : 'not Active' }}</h1>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello',
+            isActive: 'not active',  // the case that if users register and verify their identity
+        },
+        watch: {
+            isActive: function(newVal) {
+                // console -> "Sending an email - active"
+                console.log('Sending an email - ' + newVal);
+            }
+        }
+    })
+</script>
