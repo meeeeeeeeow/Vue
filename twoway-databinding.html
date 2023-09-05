@@ -12,11 +12,40 @@
         <div id="app">
             <form action="">
                 <div class="col-sm-6">
-                    <input v-model="message" type="text" class="form-control">
+                    <!-- <input v-model="message" type="text" class="form-control"> -->
+                    <input v-model="options" type="text" class="form-control">
                 </div>
+
+                <fieldset class="form-group">
+                    <legend>Radio buttons</legend>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input v-model="options" type="checkbox" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option-1">
+                            Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input v-model="options" type="checkbox" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option-2">
+                            Option two can be something else and selecting it will deselect option one
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input v-model="options" type="checkbox" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option-3">
+                            Option three is disabled
+                        </label>
+                    </div>
+                </fieldset>
+
+                <p>You selected {{ options.join(', ') }}</p>
+                <!-- options will show the options' values which you select -->
             </form>
-            {{ message }}
+
+            <!-- {{ message }} -->
             <!-- message will show the words you type in the input textbox -->
+        
+            
         </div>
     </div>
 
@@ -26,7 +55,8 @@
         let vm = new Vue({
             el: '#app',
             data: {
-                message: ''
+                message: '',
+                options: []
             }
         })
     </script>
