@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div id="app">
+    <!-- using javascript property (e.g., fontSize), not css (e.g., font-size) -->
+    <div :style="{color: 'red', fontSize: fontSize + 'px'}">{{ message }}</div>
+
+    <!-- pass the whole style object -->
+    <div :style="styleObj">{{ message }}</div>
+
+    <!-- styleObj2 is overriding styleObj -->
+    <div :style="[styleObj, styleObj2]">{{ message }}</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello',
+            fontSize: 30,
+            styleObj: {
+                color: 'blue',
+                fontSize: '10px'
+            },
+            styleObj2: {
+                color: 'yellow',
+                fontSize: '100px'
+            }
+        }
+    })
+</script>
