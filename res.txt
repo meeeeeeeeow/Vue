@@ -1,14 +1,21 @@
 https://www.udemy.com/course/vuejs-fast-crash-course/learn/lecture/9744500#overview
 
-########## install and check packages ##########
+########## (init env) install and check packages ##########
 node -v
 npm -v
 npm install -g @vue/cli
 
-########## create project ##########
+########## create and run your project ##########
 vue init webpack demo
-
-########## run your project ##########
 npm install
 npm run dev
 npm run build
+
+########## install other packages ##########
+npm install bootstrap
+-> add @import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; into App.vue style
+
+########## note ##########
+1. every .vue need to have template, script, and style
+2. name your script
+3. import any costumized vue you need into App.vue
