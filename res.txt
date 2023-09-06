@@ -1,1 +1,14 @@
 https://www.udemy.com/course/vuejs-fast-crash-course/learn/lecture/9744500#overview
+
+########## install and check packages ##########
+node -v
+npm -v
+npm install -g @vue/cli
+
+########## create project ##########
+vue init webpack demo
+
+########## run your project ##########
+npm install
+npm run dev
+npm run build
