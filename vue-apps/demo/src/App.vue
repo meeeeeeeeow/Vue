@@ -9,14 +9,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
+            <!-- <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a> -->
             <router-link class="nav-link" :to="'/'">Home</router-link>
           </li>
           <li class="nav-item">
-
-
+            <!-- <a class="nav-link" href="/contact">Contact</a> -->
+            <!-- do not refresh the page, just load different contents dynamically -->
             <router-link class="nav-link" :to="'/contact'">Contact</router-link>
-
-
 
           </li>
           <li class="nav-item dropdown">
@@ -47,7 +46,10 @@
     <!-- you can also write
       <posts-example></posts-example>
       <posts-example/> -->
-    <PostsExample></PostsExample>
+    <!-- <PostsExample></PostsExample> -->
+
+    <!-- show things dynamic in this field -->
+    <router-view></router-view>
 
   </div>
 </template>
@@ -55,12 +57,14 @@
 <script>
 import HelloWorld from './components/HelloWorld'
 import PostsExample from './components/Posts'
+import Contact from './components/Contact'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    PostsExample
+    PostsExample,
+    Contact
   }
 }
 </script>

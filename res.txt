@@ -14,8 +14,13 @@ npm run build
 ########## install other packages ##########
 npm install bootstrap
 -> add @import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; into App.vue style
+
 npm install axios
 -> import axios from 'axios' in Posts.vue script
+
+npm install vue-router@3
+(debug: https://stackoverflow.com/questions/72444072/i-cant-install-vue-router-by-npm)
+-> import VueRouter from 'vue-router' in main.js
 
 ########## note ##########
 1. every .vue need to have template, script, and style
