@@ -4,14 +4,15 @@
         <thead>
             <tr>
             <th scope="col">Id</th>
+            <th scope="col">User Id</th>
             <th scope="col">Title</th>
             <th scope="col">Body</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="post in posts" :key="post.id">
-            <th scope="row"></th>
             <td>{{ post.id }}</td>
+            <td>{{ post.userId }}</td>
             <td>{{ post.title }}</td>
             <td>{{ post.body }}</td>
             </tr>
@@ -21,17 +22,21 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         name: 'PostsExample',
         data() {
             return {
-                posts: [
-                    {id: 1, title: 'Post 1', body: 'oooo1'},
-                    {id: 2, title: 'Post 2', body: 'oooo2'},
-                    {id: 3, title: 'Post 3', body: 'oooo3'},
-                    {id: 4, title: 'Post 4', body: 'oooo4'},
-                ]
+                posts: []
             }
+        },
+
+        created() {
+            // console.log('connected to the life cycle')
+            axios.get('https://jsonplaceholder.typicode.com/posts').then(posts => {
+                this.posts = posts.data
+            });
         }
     }
 </script>
