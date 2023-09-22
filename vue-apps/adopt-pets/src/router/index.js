@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+import CatsView from '../views/CatsView.vue'
+import DogsView from '../views/DogsView.vue'
+import PetView from '../views/PetView.vue'
 
 Vue.use(VueRouter)
 
@@ -12,9 +14,19 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    component: AboutView
+    path: '/cats',
+    name: 'cats',
+    component: CatsView
+  },
+  {
+    path: '/dogs',
+    name: 'dogs',
+    component: DogsView
+  },
+  {
+    path: '/pet',
+    name: 'pet',
+    component: PetView
   }
 ]
 
