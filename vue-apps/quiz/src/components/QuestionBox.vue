@@ -12,14 +12,22 @@
                     v-for="(ans, idx) in answers"
                     :key="idx"
                     @click="selectAns(idx)"
-                    :class="[selectedIdx === idx ? 'selected' : '']"
+                    :class="answerClass(idx)"
                 >
                     {{ ans }}
                 </b-list-group-item>
             </b-list-group>
 
-            <b-button variant="primary" href="#">Submit</b-button>
-            <b-button @click="next" variant="success" href="#">Next</b-button>
+            <b-button
+                variant="primary"
+                @click="submitAns"
+                :disabled="selectedIdx === null || answered"
+            >
+                Submit
+            </b-button>
+            <b-button @click="next" variant="success">
+                Next
+            </b-button>
         </b-jumbotron>
     </div>
 </template>
@@ -30,12 +38,15 @@ import _ from 'lodash'
 export default {
     props: {  // receive the parameters (static)
         currQuestion: Object,
-        next: Function
+        next: Function,
+        increment: Function
     },
     data() {  // internal data (return params)
         return {
             selectedIdx: null,
-            shuffledAns: []
+            correctIdx: null,
+            shuffledAns: [],
+            answered: false
         }
     },
     computed: {
@@ -46,10 +57,19 @@ export default {
         }
     },
     watch: {
-        currQuestion() {
-            this.selectedIdx = null
-            this.shuffleAns()
+        currQuestion: {
+            immediate: true,  // true -> call handler when init
+            handler() {
+                // when the watched data change, call this function
+                this.selectedIdx = null
+                this.answered = false
+                this.shuffleAns()
+            }
         }
+        // currQuestion() {
+        //     this.selectedIdx = null
+        //     this.shuffleAns()
+        // }
     },
     methods: {
         selectAns(idx) {
@@ -57,7 +77,32 @@ export default {
         },
         shuffleAns() {
             let answers = [...this.currQuestion.incorrect_answers, this.currQuestion.correct_answer]
-            this.shuffledAns = _.shffle(answers)
+            this.shuffledAns = _.shuffle(answers)
+            this.correctIdx = this.shuffledAns.indexOf(this.currQuestion.correct_answer)
+            // console.log(this.correctIdx)
+        },
+        submitAns() {
+            let isCorrect = false
+            if (this.selectedIdx === this.correctIdx) {
+                isCorrect = true
+            }
+
+            this.answered = true
+            this.increment(isCorrect)
+        },
+        answerClass(idx) {
+            let answerClass = ''
+            if (!this.answered && this.selectedIdx === idx) {
+                answerClass = 'selected'
+            }
+            else if (this.answered && this.correctIdx === idx) {
+                answerClass = 'correct'
+            }
+            else if (this.answered && this.selectedIdx === idx) {
+                answerClass = 'incorrect'
+            }
+
+            return answerClass
         }
     },
     mounted() {
