@@ -1,4 +1,4 @@
-# adopt-pets
+# adopt
 
 ## Project setup
 ```

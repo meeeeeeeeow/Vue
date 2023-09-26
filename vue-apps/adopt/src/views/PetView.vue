@@ -1,3 +1,3 @@
 <template>
-    <div>Dogs</div>
+  <div>Pet</div>
 </template>
